@@ -1,0 +1,65 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="container">
+	<div class="heading">Movie Recommender System</div>
+	
+	<div class="wrapper" *ngIf="waiting">
+		<div class="search-input">
+		<input type="text" placeholder="Type to search.." (keyup)="setVal($event)">
+		<div class="autocom-box">
+			<!-- here list are inserted from javascript -->
+		</div>
+		<div class="icon" (click)="getMovie(searchText)"><i class="fa fa-search"></i></div>
+		</div>
+	</div>
+
+	<div  [hidden]="waiting">
+		<img class ="loading" src="../assets/719.gif">
+	</div>
+
+	<h3 style="text-align: center;" *ngIf="error_message">{{error_message}}</h3>
+	
+</div>
+
+	
+<div class="container" *ngIf="searchedMovie" id="searched_movie_details">
+	<section>
+		<div class = "movie_name">{{searchedMovie.title}}</div>
+
+		<div class="movie_details">
+			<section class="poster grid-item">
+				<img class="poster" src = "{{_imageUrl + searchedMovie.poster_path}}">
+			</section>
+			<section class="movie_info grid-item">
+				<h3>TITLE : {{searchedMovie.title}}</h3>
+				<h3>OVERVIEW : </h3>
+				<div>{{searchedMovie.overview}}</div>
+				<h3>RATING : {{searchedMovie.vote_average}}</h3>
+				<h3>GENRE :<span *ngFor="let genre of searchedMovie.genres"> {{genre.name}} </span></h3>
+				<h3> RELEASE DATE : {{searchedMovie.release_date}}</h3>
+				<h3> RUNTIME : {{searchedMovie.runtime}} mins</h3>
+				<h3> STATUS : {{searchedMovie.status}}</h3>
+			</section>
+		</div>
+	</section>
+
+	<section>
+		<div class="recommended">Recommended FOR You</div>
+
+		<div *ngIf="recommendedMovieList">
+			<div class="gallery">
+				<div onclick="window.location='#searched_movie_details';" class="gallery-item" *ngFor="let movie of recommendedMovieList" (click)="getMovie(movie.title)">
+					<div>
+						<img src = "{{ _imageUrl + movie.poster_path }}" width="250px" height="350px">
+					</div>
+					<div>{{ movie.title }}</div>
+				</div>
+			</div>
+		</div>
+		<div [hidden] = "recommendedWaiting">
+			<img class ="loading" src="../assets/719.gif">
+		</div>
+	
+	</section>
+
+</div>
