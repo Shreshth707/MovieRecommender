@@ -14,7 +14,7 @@ export class FastapiService {
 
   constructor(http: HttpClient) {
     this._http = http;
-    this._baseUrl = "https://recommender-script.herokuapp.com"
+    this._baseUrl = "https://shrouded-sands-84651.herokuapp.com//https://recommender-script.herokuapp.com"
   }
 
   getRecommendations(title:string){
