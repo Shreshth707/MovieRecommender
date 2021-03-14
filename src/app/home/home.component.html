@@ -48,7 +48,7 @@
 
 		<div *ngIf="recommendedMovieList">
 			<div class="gallery">
-				<div onclick="window.location='#searched_movie_details';" class="gallery-item" *ngFor="let movie of recommendedMovieList" (click)="getMovie(movie.title)">
+				<div class="gallery-item" *ngFor="let movie of recommendedMovieList" (click)="getMovie(movie.title)">
 					<div>
 						<img src = "{{ _imageUrl + movie.poster_path }}" width="250px" height="350px">
 					</div>
