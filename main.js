@@ -334,7 +334,7 @@ __webpack_require__.r(__webpack_exports__);
 class FastapiService {
     constructor(http) {
         this._http = http;
-        this._baseUrl = "https://shrouded-sands-84651.herokuapp.com//https://recommender-script.herokuapp.com";
+        this._baseUrl = "https://shrouded-sands-84651.herokuapp.com/https://recommender-script.herokuapp.com";
     }
     getRecommendations(title) {
         return this._http.get(this._baseUrl + "/recommendation?title=" + title);
